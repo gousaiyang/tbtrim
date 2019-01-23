@@ -1,13 +1,16 @@
+from io import open
+
 from setuptools import setup
 
-with open('README.rst', 'rb') as f:
-    long_description = f.read().decode('utf-8')
+with open('README.md', 'r', encoding='utf-8') as f:
+    long_description = f.read()
 
 setup(
     name='tbtrim',
-    version='0.1.0.post1',
+    version='0.1.0.post2',
     description='A utility to trim Python traceback information.',
     long_description=long_description,
+    long_description_content_type='text/markdown',
     url='https://github.com/gousaiyang/tbtrim',
     author='Saiyang Gou',
     author_email='gousaiyang223@gmail.com',
@@ -19,7 +22,8 @@ setup(
         'Operating System :: OS Independent',
         'Programming Language :: Python :: 2',
         'Programming Language :: Python :: 3',
+        'Topic :: Utilities',
     ],
-    keywords='traceback',
+    keywords='traceback trim exception excepthook',
     py_modules=['tbtrim'],
 )
