@@ -1,14 +1,13 @@
 from setuptools import setup
 
-with open('README.md', 'rb') as f:
+with open('README.rst', 'rb') as f:
     long_description = f.read().decode('utf-8')
 
 setup(
     name='tbtrim',
-    version='0.1.0',
+    version='0.1.0.post1',
     description='A utility to trim Python traceback information.',
     long_description=long_description,
-    long_description_content_type='text/markdown',
     url='https://github.com/gousaiyang/tbtrim',
     author='Saiyang Gou',
     author_email='gousaiyang223@gmail.com',
