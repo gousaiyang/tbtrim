@@ -1,0 +1,19 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+doc8 = "*"
+sphinx = "*"
+rope = "*"
+autopep8 = "*"
+pylint = "*"
+pycodestyle = "*"
+isort = {extras = ["pipfile", "requirements"],version = "*"}
+
+[packages]
+tbtrim = {editable = true,path = "."}
+
+[requires]
+python_version = "3.7"
