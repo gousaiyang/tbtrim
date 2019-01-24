@@ -31,7 +31,7 @@ git pull
 
 ## Usage
 
-> **set_trim_rule**(*predicate*)
+> **set_trim_rule**(*predicate*, *target*=BaseException, *exception*=None, *strict*=False)
 
 Set the rule for trimming traceback (will set `sys.excepthook`).
 
@@ -41,6 +41,16 @@ You can determine whether to start to trim traceback items based on the filename
 
 - **predicate** (*function*): a function which takes one `str` parameter (the filename of a traceback item) and returns `bool` (returning `True` indicates that this traceback item and the following items should be trimmed)
 
+- **target** (*class_or_tuple*): a tuple may be given as an exception to check against if to apply the rule for trimming its traceback
+
+- **exception** (*class_or_tuple*): a tuple may be given as an exception to check against if to **NOT** apply the rule for trimming its traceback
+
+- **strict** (*bool*): indicate whether checking an exception against `target` and `exception` in a strict mode (set `True` uses `is` to predicate; `False` uses `issubclass` to predicate)
+
 > **clear_trim_rule**()
 
 Clear the rule for trimming traceback (restore the excepthook).
+
+> *contextmanager* **context_trim_rule**(*predicate*, *target*=BaseException, *exception*=None, *strict*=False)
+
+Context manager for tbtrim.
