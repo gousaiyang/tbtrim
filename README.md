@@ -45,12 +45,8 @@ You can determine whether to start to trim traceback items based on the filename
 
 - **exception** (*class_or_tuple*): a tuple may be given as an exception to check against if to **NOT** apply the rule for trimming its traceback
 
-- **strict** (*bool*): indicate whether checking an exception against `target` and `exception` in a strict mode (set `True` uses `is` to predicate; `False` uses `issubclass` to predicate)
+- **strict** (*bool*): indicate whether checking an exception against `target` and `exception` in a strict mode (setting `True` uses `is` to check; `False` uses `issubclass` to check)
 
 > **clear_trim_rule**()
 
 Clear the rule for trimming traceback (restore the excepthook).
-
-> *contextmanager* **context_trim_rule**(*predicate*, *target*=BaseException, *exception*=None, *strict*=False)
-
-Context manager for tbtrim.
