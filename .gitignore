@@ -3,5 +3,8 @@ __pycache__
 *.pyc
 /build/
 /dist/
+/var/
 /*.egg-info/
 /MANIFEST
+.DS_Store
+Pipfile.lock
