@@ -16,7 +16,7 @@ def _exception_predicate(etype, target, exception, strict):
         except_flag = all(map(lambda e: etype is not e, exception))
     else:
         target_flag = any(map(lambda e: issubclass(etype, e), target))
-        except_flag = any(map(lambda e: not issubclass(etype, e), exception))
+        except_flag = all(map(lambda e: not issubclass(etype, e), exception))
 
     return (target_flag and except_flag)
 
