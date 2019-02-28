@@ -59,7 +59,10 @@ def set_trim_rule(predicate, target=BaseException, exception=(),
         else:
             limit = None
 
-        traceback.print_exception(etype, value, tb, limit)
+        if limit == 0:
+            traceback.print_exception(etype, value, None)
+        else:
+            traceback.print_exception(etype, value, tb, limit)
 
     sys.excepthook = tbtrim_excepthook
 
