@@ -1,5 +1,7 @@
 .PHONY: commit dist release setup update
 
+export PIPENV_VENV_IN_PROJECT=1
+
 MESSAGE =
 VERSION = $(shell grep "version" setup.py | sed "s/.*version='\(.*\)*'.*/\1/")
 TAG     = v$(VERSION)
