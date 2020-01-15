@@ -148,26 +148,26 @@ class TestTbtrim(unittest.TestCase):
         self.main_calls = self.code_threading_main.format(extra='')
         self.run_and_check_stderr()
 
-    @unittest.skipIf(not supports_threading_excepthook, 'threading.excepthook not supported')
+    @unittest.skipUnless(supports_threading_excepthook, 'threading.excepthook not supported')
     def test_threading_with_parmeters_1(self):
         self.tbtrim_calls = self.code_set_trim_rule.format(extra=', target=(KeyError, ValueError), exclude=(LookupError, NameError)')
         self.main_calls = self.code_threading_main.format(extra=', kwargs={"exc": KeyError}')
         self.expect_trimmed = False
         self.run_and_check_stderr()
 
-    @unittest.skipIf(not supports_threading_excepthook, 'threading.excepthook not supported')
+    @unittest.skipUnless(supports_threading_excepthook, 'threading.excepthook not supported')
     def test_threading_with_parmeters_2(self):
         self.tbtrim_calls = self.code_set_trim_rule.format(extra=', target=(KeyError, ValueError), exclude=(LookupError, NameError), strict=True')
         self.main_calls = self.code_threading_main.format(extra=', kwargs={"exc": KeyError}')
         self.run_and_check_stderr()
 
-    @unittest.skipIf(not supports_threading_excepthook, 'threading.excepthook not supported')
+    @unittest.skipUnless(supports_threading_excepthook, 'threading.excepthook not supported')
     def test_threading_with_parmeters_3(self):
         self.tbtrim_calls = self.code_set_trim_rule.format(extra=', target=(LookupError, ValueError), exclude=(ValueError, NameError)')
         self.main_calls = self.code_threading_main.format(extra=', kwargs={"exc": LookupError}')
         self.run_and_check_stderr()
 
-    @unittest.skipIf(not supports_threading_excepthook, 'threading.excepthook not supported')
+    @unittest.skipUnless(supports_threading_excepthook, 'threading.excepthook not supported')
     def test_threading_clear(self):
         self.tbtrim_calls = self.code_set_trim_rule.format(extra='') + '\n' + self.code_clear_trim_rule
         self.main_calls = self.code_threading_main.format(extra='')
