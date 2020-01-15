@@ -32,20 +32,17 @@ git pull
 
 ## Usage
 
-> **set_trim_rule**(*predicate*, *target*=BaseException, *exception*=None, *strict*=False)
+> **set_trim_rule**(*predicate*, *target*=BaseException, *exclude*=None, *strict*=False)
 
-Set the rule for trimming traceback (will set `sys.excepthook`).
+Set the rule for trimming traceback (will set `sys.excepthook` and `threading.excepthook` if available).
 
 You can determine whether to start to trim traceback items based on the filename.
 
 **Args:**
 
 - **predicate** (*function*): a function which takes one `str` parameter (the filename of a traceback item) and returns `bool` (returning `True` indicates that this traceback item and the following items should be trimmed)
-
 - **target** (*class_or_tuple*): a tuple may be given as an exception to check against if to apply the rule for trimming its traceback
-
-- **exception** (*class_or_tuple*): a tuple may be given as an exception to check against if to **NOT** apply the rule for trimming its traceback
-
+- **exclude** (*class_or_tuple*): a tuple may be given as an exception to check against if to **NOT** apply the rule for trimming its traceback
 - **strict** (*bool*): indicate whether checking an exception against `target` and `exception` in a strict mode (setting `True` uses `is` to check; `False` uses `issubclass` to check)
 
 > **clear_trim_rule**()

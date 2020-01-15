@@ -1,10 +1,10 @@
-def foo():
-    bar()
+def foo(exc=None):
+    bar(exc)
 
 
-def bar():
-    baz()
+def bar(exc=None):
+    baz(exc)
 
 
-def baz():
-    raise RuntimeError
+def baz(exc=None):
+    raise exc or RuntimeError
