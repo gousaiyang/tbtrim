@@ -167,6 +167,13 @@ class TestTbtrim(unittest.TestCase):
         self.main_calls = self.code_threading_main.format(extra=', kwargs={"exc": LookupError}')
         self.run_and_check_stderr()
 
+    @unittest.skipIf(not supports_threading_excepthook, 'threading.excepthook not supported')
+    def test_threading_clear(self):
+        self.tbtrim_calls = self.code_set_trim_rule.format(extra='') + '\n' + self.code_clear_trim_rule
+        self.main_calls = self.code_threading_main.format(extra='')
+        self.expect_trimmed = False
+        self.run_and_check_stderr()
+
 
 if __name__ == '__main__':
     unittest.main()
