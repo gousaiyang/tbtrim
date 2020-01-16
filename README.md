@@ -32,19 +32,20 @@ git pull
 
 ## Usage
 
-> **set_trim_rule**(*predicate*, *target*=BaseException, *exclude*=None, *strict*=False)
+> **set_trim_rule**(*predicate*, *target*=BaseException, *exclude*=None, *strict*=False, *exception*=None)
 
 Set the rule for trimming traceback (will set `sys.excepthook` and `threading.excepthook` if available).
 
-You can determine whether to start to trim traceback items based on the filename.
+You can determine whether to start trimming traceback items based on the filename (using `predicate`), and can choose to trim traceback only for some certain exceptions (using `target` and `exclude`).
 
 **Args:**
 
 - **predicate** (*function*): a function which takes one `str` parameter (the filename of a traceback item) and returns `bool` (returning `True` indicates that this traceback item and the following items should be trimmed)
-- **target** (*class_or_tuple*): a tuple may be given as an exception to check against if to apply the rule for trimming its traceback
-- **exclude** (*class_or_tuple*): a tuple may be given as an exception to check against if to **NOT** apply the rule for trimming its traceback
-- **strict** (*bool*): indicate whether checking an exception against `target` and `exception` in a strict mode (setting `True` uses `is` to check; `False` uses `issubclass` to check)
+- **target** (*class_or_tuple*): an exception or a tuple of exceptions may be given to trim traceback only for those exceptions
+- **exclude** (*class_or_tuple*): an exception or a tuple of exceptions may be given to exclude them from traceback trimming
+- **strict** (*bool*): indicate whether to check an exception against `target` and `exclude` in a strict mode (setting `True` uses `is` to check, `False` uses `issubclass` to check)
+- **exception** (*class_or_tuple*): this is a deprecated alias of `exclude`, retained for backward compatibility
 
 > **clear_trim_rule**()
 
-Clear the rule for trimming traceback (restore the excepthook).
+Clear the rule for trimming traceback (restore the excepthooks).

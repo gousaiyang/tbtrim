@@ -143,7 +143,7 @@ class TestTbtrim(unittest.TestCase):
         self.expect_trimmed = False
         self.run_and_check_stderr()
 
-    @unittest.skipIf(not supports_threading_excepthook, 'threading.excepthook not supported')
+    @unittest.skipUnless(supports_threading_excepthook, 'threading.excepthook not supported')
     def test_threading(self):
         self.main_calls = self.code_threading_main.format(extra='')
         self.run_and_check_stderr()
