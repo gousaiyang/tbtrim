@@ -126,13 +126,25 @@ class TestTbtrim(unittest.TestCase):
         self.main_calls = self.code_normal_main.format(extra='exc=KeyError')
         self.run_and_check_stderr()
 
-    def test_legacy_exception(self):
-        self.tbtrim_calls = self.code_set_trim_rule.format(extra=', exception=LookupError')
+    def test_legacy_exception_posarg(self):
+        self.tbtrim_calls = self.code_set_trim_rule.format(extra=', (LookupError,), LookupError, True')
         self.main_calls = self.code_normal_main.format(extra='exc=LookupError')
         self.expect_trimmed = False
         self.run_and_check_stderr()
 
-    def test_legacy_exception_conflict_with_exclude(self):
+    def test_legacy_exception_posarg_conflict_with_exclude(self):
+        self.tbtrim_calls = self.code_set_trim_rule.format(extra=', (LookupError,), LookupError, True, ValueError')
+        self.main_calls = self.code_normal_main.format(extra='exc=LookupError')
+        self.run_and_check_stderr(skip_check=True)
+        self.assertIn('''raise TypeError("cannot pass 'exclude' and 'exception' arguments at the same time")''', self.stderr)
+
+    def test_legacy_exception_kwarg(self):
+        self.tbtrim_calls = self.code_set_trim_rule.format(extra=', exception=LookupError, strict=True')
+        self.main_calls = self.code_normal_main.format(extra='exc=LookupError')
+        self.expect_trimmed = False
+        self.run_and_check_stderr()
+
+    def test_legacy_exception_kwarg_conflict_with_exclude(self):
         self.tbtrim_calls = self.code_set_trim_rule.format(extra=', exception=LookupError, exclude=ValueError')
         self.main_calls = self.code_normal_main.format(extra='exc=LookupError')
         self.run_and_check_stderr(skip_check=True)
