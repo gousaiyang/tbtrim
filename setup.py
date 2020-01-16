@@ -10,7 +10,7 @@ with open('README.md', 'r', encoding='utf-8') as f:
 
 setup(
     name='tbtrim',
-    version='0.3.0',
+    version='0.3.1',
     description='A utility to trim Python traceback information.',
     long_description=long_description,
     long_description_content_type='text/markdown',
