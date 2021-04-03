@@ -2,11 +2,8 @@
 
 [![PyPI - Downloads](https://pepy.tech/badge/tbtrim)](https://pepy.tech/count/tbtrim)
 [![PyPI - Version](https://img.shields.io/pypi/v/tbtrim.svg)](https://pypi.org/project/tbtrim)
-[![PyPI - Format](https://img.shields.io/pypi/format/tbtrim.svg)](https://pypi.org/project/tbtrim)
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/tbtrim.svg)](https://pypi.org/project/tbtrim)
-[![PyPI - Status](https://img.shields.io/pypi/status/tbtrim.svg)](https://pypi.org/project/tbtrim)
-[![Travis CI - Status](https://img.shields.io/travis/gousaiyang/tbtrim.svg)](https://travis-ci.org/gousaiyang/tbtrim)
-![License](https://img.shields.io/github/license/gousaiyang/tbtrim.svg)
+[![GitHub Actions - Status](https://github.com/gousaiyang/tbtrim/workflows/Build/badge.svg)](https://github.com/gousaiyang/tbtrim/actions?query=workflow%3ABuild)
 
 `tbtrim` is a utility to trim Python traceback information. By assigning user-refined [`sys.excepthook`](https://docs.python.org/3/library/sys.html#sys.excepthook), one can easily customize the behavior after an exception is raise and uncaught, and just before the interpreter prints out the given traceback and exception to `sys.stderr`.
 
